@@ -22,7 +22,10 @@ class ProjectFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name,
+            'description' => $this->faker->text,
+            'image' => '001.png',
+            'path' => 'images/demo'
         ];
     }
 }

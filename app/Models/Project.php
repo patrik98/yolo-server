@@ -9,6 +9,13 @@ class Project extends Model
 {
     use HasFactory;
 
+    protected $appends = ['image_path'];
+
+    public function getImagePathAttribute()
+    {
+        return env('APP_URL') . "/" . $this->path . "/" . $this->image;
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);

@@ -16,5 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('v1/login', [\App\Http\Controllers\AuthenticationController::class, 'login']);
 
-Route::delete('v1/logout', [\App\Http\Controllers\AuthenticationController::class, 'logout']);
+Route::middleware('auth:sanctum')->delete('v1/logout', [\App\Http\Controllers\AuthenticationController::class, 'logout']);
+
+Route::middleware('auth:sanctum')->get('v1/projects', [\App\Http\Controllers\ProjectController::class, 'index']);
 
