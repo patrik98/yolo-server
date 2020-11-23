@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Item;
+use App\Models\AnnotationValue;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ItemFactory extends Factory
+class AnnotationValueFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Item::class;
+    protected $model = AnnotationValue::class;
 
     /**
      * Define the model's default state.

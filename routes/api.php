@@ -20,3 +20,6 @@ Route::middleware('auth:sanctum')->delete('v1/logout', [\App\Http\Controllers\Au
 
 Route::middleware('auth:sanctum')->get('v1/projects', [\App\Http\Controllers\ProjectController::class, 'index']);
 
+Route::middleware('auth:sanctum')->get('v1/projects/{project}', [\App\Http\Controllers\ProjectController::class, 'show']);
+
+Route::middleware('auth:sanctum')->get('v1/projects/{project}/items', [\App\Http\Controllers\ItemController::class, 'random']);

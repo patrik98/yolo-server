@@ -5,16 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Item extends Model
+class ViewType extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['path', 'filename'];
-
     public $timestamps = false;
 
-    public function projects()
-    {
-        return $this->belongsToMany(Project::class);
-    }
+    protected $fillable = ['name'];
 }

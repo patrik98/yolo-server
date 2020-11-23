@@ -13,5 +13,5 @@
   
  - Install all composer dependencies `composer install`
  - Add an empty file named `database.sqlite`  inside the folder `database`
- - Run database migrations with `php artisan migrate`
+ - Run database migrations with to create tables and demo data `php artisan migrate:fresh --seed`
  - Start local development server with `php artisan serve`
