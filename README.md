@@ -15,3 +15,10 @@
  - Add an empty file named `database.sqlite`  inside the folder `database`
  - Run database migrations with to create tables and demo data `php artisan migrate:fresh --seed`
  - Start local development server with `php artisan serve`
+
+### Using Voyager admin interface
+- Navigate to the application's admin interface (example: http://localhost:8000/admin)
+- Use following credentials to log in:
+     
+        Username:   admin@yolo.at
+        Password:   123
