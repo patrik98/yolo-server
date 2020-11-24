@@ -18,7 +18,8 @@ class ItemController
      */
     public function random(Project $project)
     {
-        return response()->json($project->prepareAsArray());
+        $item = $project->items()->inRandomOrder()->first();
+        return response()->json($item);
     }
 
 }
