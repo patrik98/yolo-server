@@ -22,8 +22,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(VoyagerDatabaseSeeder::class);
-
         $projectType = ProjectType::create(['name' => 'Signposts']);
         $projectType->save();
 
@@ -115,6 +113,9 @@ class DatabaseSeeder extends Seeder
             $items[$idx]->save();
             $items[$idx]->projects()->attach($project->id);
         }
+
+        // VOYAGER
+        $this->call(VoyagerDatabaseSeeder::class);
     }
 
 }

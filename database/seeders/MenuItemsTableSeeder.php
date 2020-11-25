@@ -175,5 +175,234 @@ class MenuItemsTableSeeder extends Seeder
                 'order'      => 14,
             ])->save();
         }
+
+        /*
+         * CUSTOM, NON-VOYAGER TABLES
+         */
+
+        $yoloMenuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Yolo Tables'),
+            'url'     => '',
+        ]);
+        if (!$yoloMenuItem->exists) {
+            $yoloMenuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-data',
+                'color'      => null,
+                'parent_id'  => null,
+                'order'      => 15,
+            ])->save();
+        }
+
+        /*
+         * Projects table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Projects'),
+            'url'     => '',
+            'route'   => 'voyager.projects.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => 'voyager-folder',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 16,
+            ])->save();
+        }
+
+        /*
+         * Project types table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Project Types'),
+            'url'     => '',
+            'route'   => 'voyager.project_types.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 17,
+            ])->save();
+        }
+
+        /*
+         * Items table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Items'),
+            'url'     => '',
+            'route'   => 'voyager.items.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 18,
+            ])->save();
+        }
+
+        /*
+         * Annotations table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Annotations'),
+            'url'     => '',
+            'route'   => 'voyager.annotations.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 19,
+            ])->save();
+        }
+
+        /*
+         * Annotation Types table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Annotation Types'),
+            'url'     => '',
+            'route'   => 'voyager.annotation_types.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 20,
+            ])->save();
+        }
+
+        /*
+         * Annotation Attributes table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Annotation Attributes'),
+            'url'     => '',
+            'route'   => 'voyager.annotation_attributes.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 21,
+            ])->save();
+        }
+
+        /*
+         * Annotation Values table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Annotation Values'),
+            'url'     => '',
+            'route'   => 'voyager.annotation_values.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 22,
+            ])->save();
+        }
+
+        /*
+         * Annotation Attribute Values table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Annotation Attribute Values'),
+            'url'     => '',
+            'route'   => 'voyager.annotation_attribute_values.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 23,
+            ])->save();
+        }
+
+        /*
+         * View Types table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('View Types'),
+            'url'     => '',
+            'route'   => 'voyager.view_types.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 24,
+            ])->save();
+        }
+
+        /*
+         * Points table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Points'),
+            'url'     => '',
+            'route'   => 'voyager.points.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 25,
+            ])->save();
+        }
+
+        /*
+         * Shapes table
+         */
+        $menuItem = MenuItem::firstOrNew([
+            'menu_id' => $menu->id,
+            'title'   => __('Shapes'),
+            'url'     => '',
+            'route'   => 'voyager.shapes.index',
+        ]);
+        if (!$menuItem->exists) {
+            $menuItem->fill([
+                'target'     => '_self',
+                'icon_class' => '',
+                'color'      => null,
+                'parent_id'  => $yoloMenuItem->id,
+                'order'      => 26,
+            ])->save();
+        }
+
     }
 }

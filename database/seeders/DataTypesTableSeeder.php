@@ -54,6 +54,164 @@ class DataTypesTableSeeder extends Seeder
                 'description'           => '',
             ])->save();
         }
+
+        /*
+         * CUSTOM, NON-VOYAGER TABLES
+         */
+
+        $dataType = $this->dataType('slug', 'projects');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'projects',
+                'display_name_singular' => __('Project'),
+                'display_name_plural'   => __('Projects'),
+                'icon'                  => 'voyager-folder',
+                'model_name'            => 'App\\Models\\Project',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'project_types');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'project_types',
+                'display_name_singular' => __('Project Type'),
+                'display_name_plural'   => __('Project Types'),
+                'icon'                  => '',
+                'model_name'            => 'App\\Models\\ProjectType',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'items');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'items',
+                'display_name_singular' => __('Item'),
+                'display_name_plural'   => __('Items'),
+                'icon'                  => '',
+                'model_name'            => 'App\\Models\\Item',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'annotations');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'annotations',
+                'display_name_singular' => __('Annotation'),
+                'display_name_plural'   => __('Annotations'),
+                'icon'                  => '',
+                'model_name'            => 'App\\Models\\Annotation',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'annotation_types');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'annotation_types',
+                'display_name_singular' => __('Annotation Type'),
+                'display_name_plural'   => __('Annotation Types'),
+                'icon'                  => '',
+                'model_name'            => 'App\\Models\\AnnotationType',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'annotation_attributes');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'annotation_attributes',
+                'display_name_singular' => __('Annotation Attribute'),
+                'display_name_plural'   => __('Annotation Attributes'),
+                'icon'                  => '',
+                'model_name'            => 'App\\Models\\AnnotationAttribute',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'annotation_values');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'annotation_values',
+                'display_name_singular' => __('Annotation Value'),
+                'display_name_plural'   => __('Annotation Values'),
+                'icon'                  => '',
+                'model_name'            => 'App\\Models\\AnnotationValue',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'annotation_attribute_values');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'annotation_attribute_values',
+                'display_name_singular' => __('Annotation Attribute Value'),
+                'display_name_plural'   => __('Annotation Attribute Values'),
+                'icon'                  => '',
+                'model_name'            => 'App\\Models\\AnnotationAttributeValue',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'view_types');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'view_types',
+                'display_name_singular' => __('View Type'),
+                'display_name_plural'   => __('View Types'),
+                'icon'                  => '',
+                'model_name'            => 'App\\Models\\ViewType',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'points');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'points',
+                'display_name_singular' => __('Point'),
+                'display_name_plural'   => __('Points'),
+                'icon'                  => 'voyager-comment',
+                'model_name'            => 'App\\Models\\Point',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
+
+        $dataType = $this->dataType('slug', 'shapes');
+        if (!$dataType->exists) {
+            $dataType->fill([
+                'name'                  => 'shapes',
+                'display_name_singular' => __('Shape'),
+                'display_name_plural'   => __('Shapes'),
+                'icon'                  => '',
+                'model_name'            => 'App\\Models\\Shape',
+                'controller'            => '',
+                'generate_permissions'  => 1,
+                'description'           => '',
+            ])->save();
+        }
     }
 
     /**
