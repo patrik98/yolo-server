@@ -26,6 +26,6 @@ class VoyagerDatabaseSeeder extends Seeder
         $this->seed(PermissionsTableSeeder::class);
         $this->seed(PermissionRoleTableSeeder::class);
         $this->seed(SettingsTableSeeder::class);
-        $this->seed(VoyagerDummyDatabaseSeeder::class);
+        $this->seed(UsersTableSeeder::class);
     }
 }
