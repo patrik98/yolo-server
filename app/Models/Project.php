@@ -32,6 +32,10 @@ class Project extends Model
         return $this->belongsTo(ProjectType::class);
     }
 
+    public function annotations() {
+        return $this->hasMany(Annotation::class);
+    }
+
     public function prepareAsArray()
     {
         $data = $this->toArray();

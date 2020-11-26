@@ -203,6 +203,32 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
+        $dataRow = $this->dataRow($userDataType, 'user_belongstomany_project_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Projects',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Project',
+                    'table'       => 'projects',
+                    'type'        => 'belongsToMany',
+                    'column'      => 'id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'project_user',
+                    'pivot'       => '1',
+                    'taggable'    => '0',
+                ],
+                'order'        => 12,
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($userDataType, 'settings');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -214,7 +240,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 12,
+                'order'        => 13,
             ])->save();
         }
 
@@ -410,22 +436,7 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'text',
                 'display_name' => __('Project description'),
-                'required'     => 0,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 2,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($projectDataType, 'image');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('Image'),
-                'required'     => 0,
+                'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
@@ -435,18 +446,33 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($projectDataType, 'path');
+        $dataRow = $this->dataRow($projectDataType, 'image');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('Image path'),
-                'required'     => 0,
+                'type'         => 'image',
+                'display_name' => __('Image'),
+                'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
                 'order'        => 4,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($projectDataType, 'path');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => __('Image path'),
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'order'        => 5,
             ])->save();
         }
 
@@ -461,7 +487,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'order'        => 5,
+                'order'        => 6,
             ])->save();
         }
 
@@ -476,7 +502,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 6,
+                'order'        => 7,
             ])->save();
         }
 
@@ -491,7 +517,109 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 7,
+                'order'        => 8,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($projectDataType, 'project_belongstomany_user_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Users',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\User',
+                    'table'       => 'users',
+                    'type'        => 'belongsToMany',
+                    'column'      => 'id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'project_user',
+                    'pivot'       => '1',
+                    'taggable'    => '0',
+                ],
+                'order'        => 9,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($projectDataType, 'project_belongstomany_item_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Items',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Item',
+                    'table'       => 'items',
+                    'type'        => 'belongsToMany',
+                    'column'      => 'id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'item_project',
+                    'pivot'       => '1',
+                    'taggable'    => '0',
+                ],
+                'order'        => 10,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($projectDataType, 'project_belongsto_project_type_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Project Type',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\ProjectType',
+                    'table'       => 'project_types',
+                    'type'        => 'belongsTo',
+                    'column'      => 'project_type_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'project_types',
+                    'pivot'       => 0,
+                ],
+                'order'        => 11,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($projectDataType, 'project_hasMany_annotation_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Annotations',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Annotation',
+                    'table'       => 'annotations',
+                    'type'        => 'hasMany',
+                    'column'      => 'project_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotations',
+                    'pivot'       => 0,
+                ],
+                'order'        => 12,
             ])->save();
         }
 
@@ -528,32 +656,52 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($projectTypeDataType, 'created_at');
+        $dataRow = $this->dataRow($projectTypeDataType, 'project_type_hasMany_project_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
+                'type'         => 'relationship',
+                'display_name' => 'Projects',
                 'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Project',
+                    'table'       => 'projects',
+                    'type'        => 'hasMany',
+                    'column'      => 'project_type_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'projects',
+                    'pivot'       => 0,
+                ],
                 'order'        => 3,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($projectTypeDataType, 'updated_at');
+        $dataRow = $this->dataRow($projectTypeDataType, 'project_type_hasMany_annotation_type_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Types',
                 'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationType',
+                    'table'       => 'annotation_types',
+                    'type'        => 'hasMany',
+                    'column'      => 'project_type_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'annotation_types',
+                    'pivot'       => 0,
+                ],
                 'order'        => 4,
             ])->save();
         }
@@ -606,32 +754,53 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($itemDataType, 'created_at');
+        $dataRow = $this->dataRow($itemDataType, 'item_belongstomany_project_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
+                'type'         => 'relationship',
+                'display_name' => 'Projects',
                 'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Project',
+                    'table'       => 'projects',
+                    'type'        => 'belongsToMany',
+                    'column'      => 'id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'item_project',
+                    'pivot'       => '1',
+                    'taggable'    => '0',
+                ],
                 'order'        => 4,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($itemDataType, 'updated_at');
+        $dataRow = $this->dataRow($itemDataType, 'item_hasMany_annotation_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
+                'type'         => 'relationship',
+                'display_name' => 'Annotations',
                 'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Annotation',
+                    'table'       => 'annotations',
+                    'type'        => 'hasMany',
+                    'column'      => 'item_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotations',
+                    'pivot'       => 0,
+                ],
                 'order'        => 5,
             ])->save();
         }
@@ -659,7 +828,7 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'number',
                 'display_name' => __('Item'),
-                'required'     => 0,
+                'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
@@ -674,7 +843,7 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'number',
                 'display_name' => __('Shape'),
-                'required'     => 0,
+                'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
@@ -689,7 +858,7 @@ class DataRowsTableSeeder extends Seeder
             $dataRow->fill([
                 'type'         => 'number',
                 'display_name' => __('Annotation Type'),
-                'required'     => 0,
+                'required'     => 1,
                 'browse'       => 1,
                 'read'         => 1,
                 'edit'         => 1,
@@ -714,33 +883,153 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationDataType, 'created_at');
+        $dataRow = $this->dataRow($annotationDataType, 'annotation_belongsto_project_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'Project',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Project',
+                    'table'       => 'projects',
+                    'type'        => 'belongsTo',
+                    'column'      => 'project_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'projects',
+                    'pivot'       => 0,
+                ],
                 'order'        => 6,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationDataType, 'updated_at');
+        $dataRow = $this->dataRow($annotationDataType, 'annotation_belongsto_item_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'Item',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Item',
+                    'table'       => 'items',
+                    'type'        => 'belongsTo',
+                    'column'      => 'item_id',
+                    'key'         => 'id',
+                    'label'       => 'filename',
+                    'pivot_table' => 'items',
+                    'pivot'       => 0,
+                ],
                 'order'        => 7,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($annotationDataType, 'annotation_belongsto_annotation_type_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Type',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationType',
+                    'table'       => 'annotation_types',
+                    'type'        => 'belongsTo',
+                    'column'      => 'annotation_type_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'annotation_types',
+                    'pivot'       => 0,
+                ],
+                'order'        => 8,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($annotationDataType, 'annotation_belongsto_shape_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Shape',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Shape',
+                    'table'       => 'shapes',
+                    'type'        => 'belongsTo',
+                    'column'      => 'shape_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'shapes',
+                    'pivot'       => 0,
+                ],
+                'order'        => 9,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($annotationDataType, 'annotation_hasMany_annotation_value_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Values',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationValue',
+                    'table'       => 'annotation_values',
+                    'type'        => 'hasMany',
+                    'column'      => 'annotation_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotation_values',
+                    'pivot'       => 0,
+                ],
+                'order'        => 10,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($annotationDataType, 'annotation_hasMany_point_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Points',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Point',
+                    'table'       => 'points',
+                    'type'        => 'hasMany',
+                    'column'      => 'annotation_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'points',
+                    'pivot'       => 0,
+                ],
+                'order'        => 11,
             ])->save();
         }
 
@@ -792,33 +1081,78 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationTypeDataType, 'created_at');
+        $dataRow = $this->dataRow($annotationTypeDataType, 'annotation_type_belongsto_project_type_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'Project Type',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\ProjectType',
+                    'table'       => 'project_types',
+                    'type'        => 'belongsTo',
+                    'column'      => 'project_type_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'project_types',
+                    'pivot'       => 0,
+                ],
                 'order'        => 4,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationTypeDataType, 'updated_at');
+        $dataRow = $this->dataRow($annotationTypeDataType, 'annotation_type_hasMany_annotation_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
+                'type'         => 'relationship',
+                'display_name' => 'Annotations',
                 'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Annotation',
+                    'table'       => 'annotations',
+                    'type'        => 'hasMany',
+                    'column'      => 'annotation_type_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotations',
+                    'pivot'       => 0,
+                ],
                 'order'        => 5,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($annotationTypeDataType, 'annotation_type_hasMany_annotation_attribute_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Attributes',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationAttribute',
+                    'table'       => 'annotation_attributes',
+                    'type'        => 'hasMany',
+                    'column'      => 'annotation_type_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotation_attributes',
+                    'pivot'       => 0,
+                ],
+                'order'        => 6,
             ])->save();
         }
 
@@ -900,33 +1234,103 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationAttributeDataType, 'created_at');
+        $dataRow = $this->dataRow($annotationAttributeDataType, 'annotation_attribute_belongsto_annotation_type_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Type',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationType',
+                    'table'       => 'annotation_types',
+                    'type'        => 'belongsTo',
+                    'column'      => 'annotation_type_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'annotation_types',
+                    'pivot'       => 0,
+                ],
                 'order'        => 6,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationAttributeDataType, 'updated_at');
+        $dataRow = $this->dataRow($annotationAttributeDataType, 'annotation_attribute_belongsto_view_type_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'View Type',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\ViewType',
+                    'table'       => 'view_types',
+                    'type'        => 'belongsTo',
+                    'column'      => 'view_type_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'view_types',
+                    'pivot'       => 0,
+                ],
                 'order'        => 7,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($annotationAttributeDataType, 'annotation_attribute_hasMany_annotation_attribute_value_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Attribute Values',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationAttributeValue',
+                    'table'       => 'annotation_attribute_values',
+                    'type'        => 'hasMany',
+                    'column'      => 'annotation_attribute_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotation_attribute_values',
+                    'pivot'       => 0,
+                ],
+                'order'        => 8,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($annotationAttributeDataType, 'annotation_attribute_hasMany_annotation_value_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Values',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationValue',
+                    'table'       => 'annotation_values',
+                    'type'        => 'hasMany',
+                    'column'      => 'annotation_attribute_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotation_values',
+                    'pivot'       => 0,
+                ],
+                'order'        => 9,
             ])->save();
         }
 
@@ -1008,33 +1412,78 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationValueDataType, 'created_at');
+        $dataRow = $this->dataRow($annotationValueDataType, 'annotation_value_belongsto_annotation_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'Annotation',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Annotation',
+                    'table'       => 'annotations',
+                    'type'        => 'belongsTo',
+                    'column'      => 'annotation_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotations',
+                    'pivot'       => 0,
+                ],
                 'order'        => 6,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationValueDataType, 'updated_at');
+        $dataRow = $this->dataRow($annotationValueDataType, 'annotation_value_belongsto_annotation_attribute_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Attribute',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationAttribute',
+                    'table'       => 'annotation_attributes',
+                    'type'        => 'belongsTo',
+                    'column'      => 'annotation_attribute_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotation_attributes',
+                    'pivot'       => 0,
+                ],
                 'order'        => 7,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($annotationValueDataType, 'annotation_value_belongsto_annotation_attribute_value_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Attribute Value',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationAttributeValue',
+                    'table'       => 'annotation_attribute_values',
+                    'type'        => 'belongsTo',
+                    'column'      => 'annotation_attribute_value_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotation_attribute_values',
+                    'pivot'       => 0,
+                ],
+                'order'        => 8,
             ])->save();
         }
 
@@ -1116,33 +1565,78 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationAttributeValueDataType, 'created_at');
+        $dataRow = $this->dataRow($annotationAttributeValueDataType, 'annotation_attribute_value_belongsto_annotation_attribute_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Attribute',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationAttribute',
+                    'table'       => 'annotation_attributes',
+                    'type'        => 'belongsTo',
+                    'column'      => 'annotation_attribute_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'annotation_attributes',
+                    'pivot'       => 0,
+                ],
                 'order'        => 6,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($annotationAttributeValueDataType, 'updated_at');
+        $dataRow = $this->dataRow($annotationAttributeValueDataType, 'annotation_attribute_value_belongsto_view_type_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'View Type',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\ViewType',
+                    'table'       => 'view_types',
+                    'type'        => 'belongsTo',
+                    'column'      => 'view_type_id',
+                    'key'         => 'id',
+                    'label'       => 'name',
+                    'pivot_table' => 'view_types',
+                    'pivot'       => 0,
+                ],
                 'order'        => 7,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($annotationAttributeValueDataType, 'annotation_attribute_value_hasMany_annotation_value_relationship');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Values',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationValue',
+                    'table'       => 'annotation_values',
+                    'type'        => 'hasMany',
+                    'column'      => 'annotation_attribute_value_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotation_values',
+                    'pivot'       => 0,
+                ],
+                'order'        => 8,
             ])->save();
         }
 
@@ -1179,32 +1673,52 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($viewTypeDataType, 'created_at');
+        $dataRow = $this->dataRow($viewTypeDataType, 'view_type_hasMany_annotation_attribute_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Attributes',
                 'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationAttribute',
+                    'table'       => 'annotation_attributes',
+                    'type'        => 'hasMany',
+                    'column'      => 'view_type_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotation_attributes',
+                    'pivot'       => 0,
+                ],
                 'order'        => 3,
             ])->save();
         }
 
-        $dataRow = $this->dataRow($viewTypeDataType, 'updated_at');
+        $dataRow = $this->dataRow($viewTypeDataType, 'view_type_hasMany_annotation_attribute_value_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
+                'type'         => 'relationship',
+                'display_name' => 'Annotation Attribute Values',
                 'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\AnnotationAttributeValue',
+                    'table'       => 'annotation_attribute_values',
+                    'type'        => 'hasMany',
+                    'column'      => 'view_type_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotation_attribute_values',
+                    'pivot'       => 0,
+                ],
                 'order'        => 4,
             ])->save();
         }
@@ -1272,33 +1786,28 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($pointDataType, 'created_at');
+        $dataRow = $this->dataRow($pointDataType, 'point_belongsto_annotation_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'type'         => 'relationship',
+                'display_name' => 'Annotation',
+                'required'     => 1,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Annotation',
+                    'table'       => 'annotations',
+                    'type'        => 'belongsTo',
+                    'column'      => 'annotation_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotations',
+                    'pivot'       => 0,
+                ],
                 'order'        => 5,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($pointDataType, 'updated_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 6,
             ])->save();
         }
 
@@ -1335,33 +1844,28 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($shapeDataType, 'created_at');
+        $dataRow = $this->dataRow($shapeDataType, 'shape_hasMany_annotation_relationship');
         if (!$dataRow->exists) {
             $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Created At'),
+                'type'         => 'relationship',
+                'display_name' => 'Annotations',
                 'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 1,
+                'delete'       => 1,
+                'details'      => [
+                    'model'       => 'App\\Models\\Annotation',
+                    'table'       => 'annotations',
+                    'type'        => 'hasMany',
+                    'column'      => 'shape_id',
+                    'key'         => 'id',
+                    'label'       => 'id',
+                    'pivot_table' => 'annotations',
+                    'pivot'       => 0,
+                ],
                 'order'        => 3,
-            ])->save();
-        }
-
-        $dataRow = $this->dataRow($shapeDataType, 'updated_at');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'timestamp',
-                'display_name' => __('Updated At'),
-                'required'     => 0,
-                'browse'       => 0,
-                'read'         => 0,
-                'edit'         => 0,
-                'add'          => 0,
-                'delete'       => 0,
-                'order'        => 4,
             ])->save();
         }
 

@@ -18,6 +18,11 @@ class AnnotationType extends Model
         return $this->belongsTo(ProjectType::class);
     }
 
+    public function annotations()
+    {
+        return $this->hasMany(Annotation::class);
+    }
+
     public function annotationAttributes()
     {
         return $this->hasMany(AnnotationAttribute::class);

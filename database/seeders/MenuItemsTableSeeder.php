@@ -226,7 +226,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-list',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 17,
@@ -245,7 +245,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-photos',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 18,
@@ -264,7 +264,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-pen',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 19,
@@ -283,7 +283,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-list',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 20,
@@ -302,7 +302,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-tag',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 21,
@@ -321,7 +321,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-character',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 22,
@@ -359,7 +359,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-eye',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 24,
@@ -378,7 +378,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-dot-3',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 25,
@@ -397,7 +397,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-medal-rank-star',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 26,

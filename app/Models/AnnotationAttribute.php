@@ -23,6 +23,11 @@ class AnnotationAttribute extends Model
         return $this->belongsTo(ViewType::class);
     }
 
+    public function annotationValues()
+    {
+        return $this->hasMany(AnnotationValue::class);
+    }
+
     public function annotationAttributeValues()
     {
         return $this->hasMany(AnnotationAttributeValue::class);

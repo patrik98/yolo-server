@@ -10,4 +10,9 @@ class Shape extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    public function annotations()
+    {
+        return $this->hasMany(Annotation::class);
+    }
 }

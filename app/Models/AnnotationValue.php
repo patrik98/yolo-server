@@ -11,4 +11,19 @@ class AnnotationValue extends Model
 
     public $timestamps = false;
 
+    public function annotation()
+    {
+        return $this->belongsTo(Annotation::class);
+    }
+
+    public function annotationAttribute()
+    {
+        return $this->belongsTo(AnnotationAttribute::class);
+    }
+
+    public function annotationAttributeValue()
+    {
+        return $this->belongsTo(AnnotationAttributeValue::class);
+    }
+
 }

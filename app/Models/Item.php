@@ -23,4 +23,8 @@ class Item extends Model
     {
         return $this->belongsToMany(Project::class);
     }
+
+    public function annotations() {
+        return $this->hasMany(Annotation::class);
+    }
 }

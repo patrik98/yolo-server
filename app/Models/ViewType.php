@@ -12,4 +12,14 @@ class ViewType extends Model
     public $timestamps = false;
 
     protected $fillable = ['name'];
+
+    public function annotationAttributes()
+    {
+        return $this->hasMany(AnnotationAttribute::class);
+    }
+
+    public function annotationAttributeValues()
+    {
+        return $this->hasMany(AnnotationAttributeValue::class);
+    }
 }
