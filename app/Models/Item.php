@@ -10,13 +10,13 @@ class Item extends Model
     use HasFactory;
 
     protected $appends = ['uri'];
-    protected $fillable = ['path', 'filename'];
+    protected $fillable = ['filename'];
 
     public $timestamps = false;
 
     public function getUriAttribute()
     {
-        return env('APP_URL') . "/images/" . $this->path . "/" . $this->filename;
+        return env('APP_URL') . "/images/" . "/" . $this->filename;
     }
 
     public function projects()

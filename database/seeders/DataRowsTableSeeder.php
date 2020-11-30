@@ -461,21 +461,6 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($projectDataType, 'path');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('Image path'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 5,
-            ])->save();
-        }
-
         $dataRow = $this->dataRow($projectDataType, 'project_type_id');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -487,7 +472,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'order'        => 6,
+                'order'        => 5,
             ])->save();
         }
 
@@ -502,7 +487,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 7,
+                'order'        => 6,
             ])->save();
         }
 
@@ -517,7 +502,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 0,
                 'add'          => 0,
                 'delete'       => 0,
-                'order'        => 8,
+                'order'        => 7,
             ])->save();
         }
 
@@ -543,7 +528,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot'       => '1',
                     'taggable'    => '0',
                 ],
-                'order'        => 9,
+                'order'        => 8,
             ])->save();
         }
 
@@ -569,7 +554,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot'       => '1',
                     'taggable'    => '0',
                 ],
-                'order'        => 10,
+                'order'        => 9,
             ])->save();
         }
 
@@ -594,7 +579,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot_table' => 'project_types',
                     'pivot'       => 0,
                 ],
-                'order'        => 11,
+                'order'        => 10,
             ])->save();
         }
 
@@ -619,7 +604,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot_table' => 'annotations',
                     'pivot'       => 0,
                 ],
-                'order'        => 12,
+                'order'        => 11,
             ])->save();
         }
 
@@ -724,21 +709,6 @@ class DataRowsTableSeeder extends Seeder
             ])->save();
         }
 
-        $dataRow = $this->dataRow($itemDataType, 'path');
-        if (!$dataRow->exists) {
-            $dataRow->fill([
-                'type'         => 'text',
-                'display_name' => __('Item path'),
-                'required'     => 1,
-                'browse'       => 1,
-                'read'         => 1,
-                'edit'         => 1,
-                'add'          => 1,
-                'delete'       => 1,
-                'order'        => 2,
-            ])->save();
-        }
-
         $dataRow = $this->dataRow($itemDataType, 'filename');
         if (!$dataRow->exists) {
             $dataRow->fill([
@@ -750,7 +720,7 @@ class DataRowsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
-                'order'        => 3,
+                'order'        => 2,
             ])->save();
         }
 
@@ -776,7 +746,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot'       => '1',
                     'taggable'    => '0',
                 ],
-                'order'        => 4,
+                'order'        => 3,
             ])->save();
         }
 
@@ -801,7 +771,7 @@ class DataRowsTableSeeder extends Seeder
                     'pivot_table' => 'annotations',
                     'pivot'       => 0,
                 ],
-                'order'        => 5,
+                'order'        => 4,
             ])->save();
         }
 

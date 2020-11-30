@@ -15,13 +15,13 @@ class CreateProjectsTable extends Migration
     {
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string("name", 150);
             $table->string("description", 250);
             $table->string("image", 250);
-            $table->string("path", 100);
 
             $table->foreignId("project_type_id")->constrained("project_types");
+
+            $table->timestamps();
         });
     }
 

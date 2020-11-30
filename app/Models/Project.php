@@ -10,11 +10,11 @@ class Project extends Model
     use HasFactory;
 
     protected $appends = ['image_path'];
-    protected $fillable = ['name', 'description', 'image', 'path'];
+    protected $fillable = ['name', 'description', 'image'];
 
     public function getImagePathAttribute()
     {
-        return env('APP_URL') . "/" . $this->path . "/" . $this->image;
+        return env('APP_URL') . "/" . $this->image;
     }
 
     public function users()
