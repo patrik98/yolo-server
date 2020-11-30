@@ -95,18 +95,17 @@ class DatabaseSeeder extends Seeder
         $project = Project::create([
             'name' => 'Digital Signposts',
             'description' => 'Signposts in the wild',
-            'image' => 'images/demo/preview_1.png',
+            'image' => 'images/projects/preview_1.png',
             'project_type_id' => $projectType->id
         ]);
         $project->save();
-
 
 
         $items = [];
 
         foreach (['001.jpg', '002.jpg', '003.jpg'] as $idx => $item) {
             $items[] = Item::create([
-                'filename' => 'demo1/'.$item,
+                'filename' => 'images/items/'.$item,
             ]);
             $items[$idx]->save();
             $items[$idx]->projects()->attach($project->id);
@@ -114,6 +113,7 @@ class DatabaseSeeder extends Seeder
 
         // VOYAGER
         $this->call(VoyagerDatabaseSeeder::class);
+        $project->users()->attach($project->id);
     }
 
 }

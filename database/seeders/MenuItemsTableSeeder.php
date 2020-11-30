@@ -340,7 +340,7 @@ class MenuItemsTableSeeder extends Seeder
         if (!$menuItem->exists) {
             $menuItem->fill([
                 'target'     => '_self',
-                'icon_class' => '',
+                'icon_class' => 'voyager-paperclip',
                 'color'      => null,
                 'parent_id'  => $yoloMenuItem->id,
                 'order'      => 23,

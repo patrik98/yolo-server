@@ -98,6 +98,11 @@ class DataTypesTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'details'               => [
+                    'order_column' => 'id',
+                    'order_display_column' => 'id',
+                    "order_direction" => "asc",
+                ]
             ])->save();
         }
 
@@ -140,6 +145,11 @@ class DataTypesTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'details'               => [
+                    'order_column' => 'sort',
+                    'order_display_column' => 'sort',
+                    "order_direction" => "asc",
+                ]
             ])->save();
         }
 
@@ -163,11 +173,16 @@ class DataTypesTableSeeder extends Seeder
                 'name'                  => 'annotation_attribute_values',
                 'display_name_singular' => __('Annotation Attribute Value'),
                 'display_name_plural'   => __('Annotation Attribute Values'),
-                'icon'                  => '',
+                'icon'                  => 'voyager-paperclip',
                 'model_name'            => 'App\\Models\\AnnotationAttributeValue',
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'details'               => [
+                    'order_column' => 'sort',
+                    'order_display_column' => 'sort',
+                    "order_direction" => "asc",
+                ]
             ])->save();
         }
 

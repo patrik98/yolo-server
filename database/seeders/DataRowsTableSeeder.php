@@ -549,7 +549,7 @@ class DataRowsTableSeeder extends Seeder
                     'type'        => 'belongsToMany',
                     'column'      => 'id',
                     'key'         => 'id',
-                    'label'       => 'name',
+                    'label'       => 'filename',
                     'pivot_table' => 'item_project',
                     'pivot'       => '1',
                     'taggable'    => '0',
