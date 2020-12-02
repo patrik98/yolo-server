@@ -16,7 +16,7 @@ class Item extends Model
 
     public function getUriAttribute()
     {
-        return env('APP_URL') . "/images/" . "/" . $this->filename;
+        return env('APP_URL') . "/" . $this->filename;
     }
 
     public function projects()

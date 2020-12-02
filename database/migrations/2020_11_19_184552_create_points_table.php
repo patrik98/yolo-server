@@ -17,7 +17,7 @@ class CreatePointsTable extends Migration
             $table->id();
             $table->integer("x");
             $table->integer("y");
-            $table->foreignId("annotation_id")->constrained("annotation");
+            $table->foreignId("annotation_id")->constrained("annotations");
         });
     }
 

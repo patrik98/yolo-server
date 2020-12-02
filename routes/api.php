@@ -23,3 +23,9 @@ Route::middleware('auth:sanctum')->get('v1/projects', [\App\Http\Controllers\Pro
 Route::middleware('auth:sanctum')->get('v1/projects/{project}', [\App\Http\Controllers\ProjectController::class, 'show']);
 
 Route::middleware('auth:sanctum')->get('v1/projects/{project}/items', [\App\Http\Controllers\ItemController::class, 'random']);
+
+Route::middleware('auth:sanctum')->get('v1/projects/{project}/items/{item}', [\App\Http\Controllers\ItemController::class, 'show']);
+
+Route::middleware('auth:sanctum')->post('v1/projects/{project}/items/{item}', [\App\Http\Controllers\ItemController::class, 'store']);
+
+//Route::post('v1/projects/{project}/items/{item}', [\App\Http\Controllers\ItemController::class, 'store']);
