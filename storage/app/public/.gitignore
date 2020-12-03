@@ -1,6 +1,6 @@
 *
 !.gitignore
-!images/projects/preview_1.png
-!images/items/001.jpg
-!images/items/002.jpg
-!images/items/003.jpg
+!../../../public/demo-images/project/preview_1.png
+!../../../public/demo-images/items/001.jpg
+!../../../public/demo-images/items/002.jpg
+!../../../public/demo-images/items/003.jpg

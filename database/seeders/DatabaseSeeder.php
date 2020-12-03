@@ -95,7 +95,7 @@ class DatabaseSeeder extends Seeder
         $project = Project::create([
             'name' => 'Digital Signposts',
             'description' => 'Signposts in the wild',
-            'image' => 'storage/images/projects/preview_1.png',
+            'image' => 'demo-images/projects/preview_1.png',
             'project_type_id' => $projectType->id
         ]);
         $project->save();
@@ -105,7 +105,7 @@ class DatabaseSeeder extends Seeder
 
         foreach (['001.jpg', '002.jpg', '003.jpg'] as $idx => $item) {
             $items[] = Item::create([
-                'filename' => 'storage/images/items/'.$item,
+                'filename' => 'demo-images/items/'.$item,
             ]);
             $items[$idx]->save();
             $items[$idx]->projects()->attach($project->id);

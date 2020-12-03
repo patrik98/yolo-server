@@ -27,5 +27,3 @@ Route::middleware('auth:sanctum')->get('v1/projects/{project}/items', [\App\Http
 Route::middleware('auth:sanctum')->get('v1/projects/{project}/items/{item}', [\App\Http\Controllers\ItemController::class, 'show']);
 
 Route::middleware('auth:sanctum')->post('v1/projects/{project}/items/{item}', [\App\Http\Controllers\ItemController::class, 'store']);
-
-//Route::post('v1/projects/{project}/items/{item}', [\App\Http\Controllers\ItemController::class, 'store']);

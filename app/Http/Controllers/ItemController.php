@@ -35,9 +35,7 @@ class ItemController
      */
     public function show(Project $project, Item $item)
     {
-        $index = $item->id - 1;
-
-        $item = $project->items()->getResults()[$index];
+        $item = $project->items()->where("item_id", "=", $item->id)->get();
 
         return response()->json($item);
     }
