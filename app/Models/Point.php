@@ -11,13 +11,20 @@ class Point extends Model
 
     public $timestamps = false;
 
-//    public function annotationAttributes()
-//    {
-//        return $this->hasMany(AnnotationAttribute::class);
-//    }
+    public static function createInstance(int $x, int $y, int $annotationId = -1)
+    {
+        $point = new Point();
+
+        $point->x = $x;
+        $point->y = $y;
+        $point->annotation_id = $annotationId;
+
+        return $point;
+    }
 
     public function annotation()
     {
         return $this->belongsTo(Annotation::class);
     }
+
 }

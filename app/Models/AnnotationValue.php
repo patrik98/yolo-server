@@ -11,6 +11,18 @@ class AnnotationValue extends Model
 
     public $timestamps = false;
 
+    public static function createInstance(string $value, int $attributeId, int $annotationAttributeValueId = -1, int $annotationId = -1)
+    {
+        $annotationValue = new AnnotationValue();
+
+        $annotationValue->value = $value;
+        $annotationValue->annotation_attribute_id = $attributeId;
+        $annotationValue->annotation_attribute_value_id = $annotationAttributeValueId; //TODO: resolve problem with attribute values being referenced by annotation values
+        $annotationValue->annotation_id = $annotationId;
+
+        return $annotationValue;
+    }
+
     public function annotation()
     {
         return $this->belongsTo(Annotation::class);
