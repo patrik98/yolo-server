@@ -60,7 +60,8 @@ class AnnotationController extends Controller
 
     public function storeWithTransaction(int $projectId, int $itemId, array $annotationContents)
     {
-        $annotation = Annotation::createInstance($projectId, $itemId, $annotationContents["shapeId"], $annotationContents["annotationTypeId"]);
+        $shapeId = $this->determineShapeId($annotationContents["shapeId"]);
+        $annotation = Annotation::createInstance($projectId, $itemId, $shapeId, $annotationContents["annotationTypeId"]);
 
         $annotationValues = [];
         foreach ($annotationContents["annotationValues"] as $key) {
@@ -81,7 +82,7 @@ class AnnotationController extends Controller
     {
         $rules = [
             "*.annotationTypeId" => ["required", "integer", "min:1"],
-            "*.shapeId" => ["required", "integer", "min:1"],
+            "*.shapeId" => ["required", "min:1"],
             "*.annotationValues" => ["required", "array"],
             "*.annotationValues.*.attributeId" => ["required", "integer", "min:1"],
             "*.annotationValues.*.value" => ["required"],
@@ -99,6 +100,30 @@ class AnnotationController extends Controller
         }
 
         return false;
+    }
+
+    private function determineShapeId(string $shape) {
+        $id = -1;
+
+        if (is_int($shape + 0) == true) {
+            $id = intval($shape);
+        } else {
+            switch ($shape) {
+                case "Rectangle":
+                    $id = 1;
+                    break;
+                case "Circle":
+                    $id = 2;
+                    break;
+                case "Ellipse":
+                    $id = 3;
+                    break;
+                default:
+                    $id = 4;
+            }
+        }
+
+        return $id;
     }
 
 }
